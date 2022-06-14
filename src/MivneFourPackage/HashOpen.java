@@ -3,9 +3,9 @@ package MivneFourPackage;
 public class HashOpen{
     private Node[] array_of_hall;    /// open addressing here !!!
 
-    private int m;  //// size
+    final int m;  //// size
 
-    public HashOpen(int m){
+    public HashOpen(int m){  /////  the size of HashOpen we want it to be
         this.m = m;
         this.array_of_hall = new Node[this.m];  /////  the table of the people in the hall
     }
@@ -23,7 +23,7 @@ public class HashOpen{
     }
 
 
-    public int insert(int id, int hashFunc){}   ////// continue
+//    public int insert(int id, int hashFunc){}   ////// continue
 
 
 

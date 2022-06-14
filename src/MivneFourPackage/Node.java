@@ -32,7 +32,33 @@ public class Node implements Comparable{
 
 
     @Override
-    public int compareTo(Object o) {
-        return 0;  //////  continue, comparing by ticket_type according to the specified order in the assignment
+    public int compareTo(Object o) {    ////////  0 if equal, 1 if greater, -1 if lower
+        if (this.getTicket_type() == ((Node)o).getTicket_type()){
+            return 0;
+        }                 //////////// from here on, they're not equal based to ticket_type
+        if (this.getTicket_type() == "VIP"){
+            return 1;
+        }
+        if (((Node)o).getTicket_type() == "VIP"){
+            return -1;
+        }
+        if (this.getTicket_type() == "GOLDEN_RING" && ((Node)o).getTicket_type() != "VIP"){
+            return 1;
+        }
+        if (this.getTicket_type() != "VIP" && ((Node)o).getTicket_type() == "GOLDEN_RING"){
+            return -1;
+        }
+        if (this.getTicket_type() == "INNER_RING" && ((Node)o).getTicket_type() != "OUTER_RING"){
+            return -1;
+        }
+        if (this.getTicket_type() != "OUTER_RING" && ((Node)o).getTicket_type() == "INNER_RING"){
+            return 1;
+        }
+        if (((Node)o).getTicket_type() == "OUTER_RING") {
+            return 1;
+        } else { ///////  this is: if (this.getTicket_type() == "OUTER_RING")
+            return -1;
+        }
+
     }
 }

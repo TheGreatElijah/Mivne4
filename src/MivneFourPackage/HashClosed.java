@@ -2,12 +2,15 @@ package MivneFourPackage;
 
 public class HashClosed {
     private LinkedList[] array_of_subscribed;
-    private Node[] sure_people;
-    private int m;  //// size of the table needs to be the (number of lines in the file input1)/3
+    private Node[] sure_people;       ////////  not needed  !!!!!!!!!!
+    final int m;  //// size of the table needs to be the (number of lines in the file input1)/3
 
     public HashClosed(int m){  // this m right here is the number of people that we plan to register
         this.m = m/3;
         this.array_of_subscribed = new LinkedList[this.m];   ///// the table of the people who are subscribed
+        for (int i=0; i<this.m; i++){
+            this.array_of_subscribed[i] = new LinkedList();
+        }
     }
 
     public void insert(String[] person){
@@ -24,12 +27,7 @@ public class HashClosed {
     public LinkedList[] getArray_of_subscribed() { return this.array_of_subscribed; }
 
 
-    public void read_file(String file_name){  //////////  complete this with I/O later , the file input1
-        do something ////////////////////////////////////////////////////  this method should be in the class Concert !!!
-    }  //////////////////  according to the assignment, I think this method should be in the class Concert !!!
-
-
-    public int get_amount_of_nodes_in_subscribed(){   ////////  might be needed, might not be needed, who knows
+    public int get_amount_of_nodes_in_subscribed(){
         int sum_of_nodes = 0;
         for(int curr_size : this.getNodesSizes()) {
             sum_of_nodes += curr_size;  //////  sum of nodes
@@ -64,7 +62,7 @@ public class HashClosed {
 
 
     public void add_to_array_of_sure_people(int id){  //// makes the reception\adds the people to the sure_people array, later we will put in hall
-        if (this.sure_people == null){
+        if (this.sure_people == null){         ////////////////////////////////    this function might not be needed !!!
             this.sure_people = new Node[this.get_amount_of_nodes_in_subscribed()];
         }
         ////  and put the node with that id in the this.sure_people array with a while cell != null
