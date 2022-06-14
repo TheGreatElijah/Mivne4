@@ -1,16 +1,29 @@
 package MivneFourPackage;
 
-public class HashOpen {
-    private LinkedList[] array_of_hall;
+public class HashOpen{
+    private Node[] array_of_hall;    /// open addressing here !!!
 
-    private int m = 11;  //// size = like the
+    private int m;  //// size
 
-    public HashOpen(){
-        this.array_of_hall = new LinkedList[this.m];  /////  the table of the people in the hall
+    public HashOpen(int m){
+        this.m = m;
+        this.array_of_hall = new Node[this.m];  /////  the table of the people in the hall
+    }
+    public int getSize(){ return this.m; }
+    public Node[] getArray_of_hall() { return this.array_of_hall; }
+
+    public int getNumberElements(){
+        int amount = 0;
+        for (Node ls : this.array_of_hall){
+            if(ls != null){
+                amount++;
+            }
+        }
+        return amount;
     }
 
-    public int getM() { return this.m; }
-    public LinkedList[] getArray_of_hall() { return this.array_of_hall; }
+
+    public int insert(int id, int hashFunc){}   ////// continue
 
 
 

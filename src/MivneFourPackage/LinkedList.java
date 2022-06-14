@@ -35,8 +35,22 @@ public class LinkedList {
         }
     }
 
-    public void search_id(int sought_id){    ///////////////  maybe change to returns int or returns Node
+    public int[] search(String[] person){
         Node runner = this.head;
-        while (runner !=)
+        int steps = 1;
+        while (runner != null){
+            if (runner.getData() == person){
+                int[] res = new int[2];
+                res[0] = 1;
+                res[1] = steps;
+                return res;
+            }
+            steps++;
+            runner = runner.getNext();
+        }
+        int[] res2 = new int[2];
+        res2[0] = 0;
+        res2[1] = steps;
+        return res2;
     }
 }

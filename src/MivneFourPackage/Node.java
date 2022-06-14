@@ -13,9 +13,7 @@ public class Node implements Comparable{
         this.next = null;
     }
 
-    public String[] getData(){
-        return this.data;
-    }
+    public String[] getData(){ return this.data; }
 
     public Node getNext() { return this.next; }
     public void setNext(Node person){ this.next = person; }
