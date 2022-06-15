@@ -33,32 +33,29 @@ public class Node implements Comparable{
 
     @Override
     public int compareTo(Object o) {    ////////  0 if equal, 1 if greater, -1 if lower
-        if (this.getTicket_type() == ((Node)o).getTicket_type()){
+        int this_value = 0, o_value = 0;
+        String [] types = new String[4];
+        types[3] = "VIP";
+        types[2] = "GOLDEN_RING";
+        types[1] = "INNER_RING";
+        types[0] = "OUTER_RING";
+        for (int i=0; i < types.length; i++){
+            if (((Node)o).getTicket_type().equals(types[i])){
+                o_value = i;
+            }
+            if (this.getTicket_type().equals(types[i])){
+                this_value = i;
+            }
+        }
+        if (this_value == o_value){
             return 0;
-        }                 //////////// from here on, they're not equal based to ticket_type
-        if (this.getTicket_type() == "VIP"){
-            return 1;
         }
-        if (((Node)o).getTicket_type() == "VIP"){
+        if (this_value > o_value){
+            return 1;
+        } else{
             return -1;
         }
-        if (this.getTicket_type() == "GOLDEN_RING" && ((Node)o).getTicket_type() != "VIP"){
-            return 1;
-        }
-        if (this.getTicket_type() != "VIP" && ((Node)o).getTicket_type() == "GOLDEN_RING"){
-            return -1;
-        }
-        if (this.getTicket_type() == "INNER_RING" && ((Node)o).getTicket_type() != "OUTER_RING"){
-            return -1;
-        }
-        if (this.getTicket_type() != "OUTER_RING" && ((Node)o).getTicket_type() == "INNER_RING"){
-            return 1;
-        }
-        if (((Node)o).getTicket_type() == "OUTER_RING") {
-            return 1;
-        } else { ///////  this is: if (this.getTicket_type() == "OUTER_RING")
-            return -1;
-        }
+
 
     }
 }

@@ -47,6 +47,9 @@ public class Concert {
             int insertion_index = 0;
             while ((st = br.readLine()) != null) {
                 String[] line = st.split(",");
+
+                System.out.println("(registered.search(line))[0]" + (registered.search(line))[0]);  ////////  tteessttt
+
                 if ((registered.search(line))[0] == 1){
                     res[insertion_index] = Integer.parseInt(line[0]);
                     insertion_index++;
@@ -54,6 +57,7 @@ public class Concert {
                     not_subscribed.add(line);
                 }
             }
+            System.out.println("insertion index: " + insertion_index);    /////  tteesstt
 
             if (insertion_index < registered.get_amount_of_nodes_in_subscribed()) {
                 Node[] not_subscribed_sort = new Node[not_subscribed.getSize()];  //////  creating this now this
@@ -77,6 +81,11 @@ public class Concert {
                     not_subscribed_sort[i] = not_subscribed_sort[max_index];
                     not_subscribed_sort[max_index] = temp;
                 }
+//                System.out.println("from here not subscribes sort after sort: ");      ////  tteesstt
+//                for (Node i : not_subscribed_sort){
+//                    System.out.println(i.getId());
+//                }
+//                System.out.println(" hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");    ////   tteesstt
 
                 int addition_index = 0;
                 while (insertion_index < registered.get_amount_of_nodes_in_subscribed()){
