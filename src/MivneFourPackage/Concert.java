@@ -62,13 +62,14 @@ public class Concert {
                 int i1 = 0;
                 while (runner != null){
                     not_subscribed_sort[i1] = runner;
+                    runner = runner.getNext();
                     i1++;
                 }  ///////   created not_subscribed_sort
 
                 for(int i=0; i < not_subscribed_sort.length - 1; i++){
                     int max_index = i;
                     for(int j=i+1; j < not_subscribed_sort.length; j++){
-                        if (not_subscribed_sort[max_index].compareTo(not_subscribed_sort[j]) == 1){
+                        if (not_subscribed_sort[max_index].compareTo(not_subscribed_sort[j]) == -1){
                             max_index = j;
                         }
                     }
@@ -87,15 +88,43 @@ public class Concert {
         }catch (IOException e){
             System.out.println(e.getMessage() + "\n" + e.getStackTrace());
         }
+
+        for(int i=0; i < res.length - 1; i++){   /////////////  sorting res now
+            int min_index = i;
+            for(int j=i+1; j < res.length; j++){
+                if (res[min_index] > res[j]){
+                    min_index = j;
+                }
+            }
+            int temp = res[i];
+            res[i] = res[min_index];
+            res[min_index] = temp;
+        }
+
         return res;
     }
 
 
-
-
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//    public static int reception_AverageSteps(String file_path, HashClosed registered){}
+    public static int reception_AverageSteps(String file_path, HashClosed registered){
+//        int step_counter = 0, sum_of_nodes = 0;
+//        for(int curr_size : registered.getNodesSizes()){
+//            sum_of_nodes += curr_size;  //////  sum of nodes
+//
+//            for (int step = 1; step <= curr_size; step++) {    ////  sum of steps of all the nodes
+//                step_counter += step;
+//            }                                                                                                this is not what's needed
+//            step_counter += 1;  //// last check, when we realise the list is over                            this is not what's needed
+//        }
+//
+//        return step_counter / sum_of_nodes;  /// return the rounded down value of: step_counter / sum_of_nodes
+        return 0;
+
+
+
+    }
+
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

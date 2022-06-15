@@ -3,7 +3,7 @@ package MivneFourPackage;
 public class HashOpen{
     private Node[] array_of_hall;    /// open addressing here !!!
 
-    final int m;  //// size
+    private int m;  //// size
 
     public HashOpen(int m){  /////  the size of HashOpen we want it to be
         this.m = m;
