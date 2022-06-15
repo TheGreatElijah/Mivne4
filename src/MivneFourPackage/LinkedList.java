@@ -39,7 +39,13 @@ public class LinkedList {
         Node runner = this.head;
         int steps = 1;
         while (runner != null){
-            if (runner.getData() == person){
+            boolean flag = true;
+            for (int i=0; i<4;i++){
+                if (!runner.getData()[i].equals(person[i])){
+                    flag = false;
+                }
+            }
+            if (flag){
                 int[] res = new int[2];
                 res[0] = 1;
                 res[1] = steps;
