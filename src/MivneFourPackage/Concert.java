@@ -47,9 +47,6 @@ public class Concert {
             int insertion_index = 0;
             while ((st = br.readLine()) != null) {
                 String[] line = st.split(",");
-
-                System.out.println("(registered.search(line))[0]" + (registered.search(line))[0]);  ////////  tteessttt
-
                 if ((registered.search(line))[0] == 1){
                     res[insertion_index] = Integer.parseInt(line[0]);
                     insertion_index++;
@@ -57,7 +54,6 @@ public class Concert {
                     not_subscribed.add(line);
                 }
             }
-            System.out.println("insertion index: " + insertion_index);    /////  tteesstt
 
             if (insertion_index < registered.get_amount_of_nodes_in_subscribed()) {
                 Node[] not_subscribed_sort = new Node[not_subscribed.getSize()];  //////  creating this now this
@@ -81,11 +77,6 @@ public class Concert {
                     not_subscribed_sort[i] = not_subscribed_sort[max_index];
                     not_subscribed_sort[max_index] = temp;
                 }
-//                System.out.println("from here not subscribes sort after sort: ");      ////  tteesstt
-//                for (Node i : not_subscribed_sort){
-//                    System.out.println(i.getId());
-//                }
-//                System.out.println(" hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");    ////   tteesstt
 
                 int addition_index = 0;
                 while (insertion_index < registered.get_amount_of_nodes_in_subscribed()){
@@ -117,18 +108,27 @@ public class Concert {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public static int reception_AverageSteps(String file_path, HashClosed registered){
-//        int step_counter = 0, sum_of_nodes = 0;
-//        for(int curr_size : registered.getNodesSizes()){
-//            sum_of_nodes += curr_size;  //////  sum of nodes
-//
-//            for (int step = 1; step <= curr_size; step++) {    ////  sum of steps of all the nodes
-//                step_counter += step;
-//            }                                                                                                this is not what's needed
-//            step_counter += 1;  //// last check, when we realise the list is over                            this is not what's needed
-//        }
-//
-//        return step_counter / sum_of_nodes;  /// return the rounded down value of: step_counter / sum_of_nodes
-        return 0;
+        LinkedList not_subscribed = new LinkedList();
+        int avg = 0, amount_of_people_arrived = 0;
+
+        File file = new File(file_path);
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String st;
+            while ((st = br.readLine()) != null) {
+                amount_of_people_arrived++;
+                String[] line = st.split(",");
+                avg += (registered.search(line))[1];
+            }
+        }catch (IOException e){
+            System.out.println(e.getMessage() + "\n" + e.getStackTrace());
+        }
+
+        int[] sortedIds = Concert.reception(file_path, registered);    /////////   maybe seat them now ??
+
+        avg = avg / amount_of_people_arrived;
+        return avg;
+
 
 
 

@@ -8,10 +8,10 @@ public class main {
 
         int[] arrived = Concert.reception("D:\\Minvefour\\input2.txt", hash);
 
-        for (int i : arrived){                /////////////////    tteesssttt
-            System.out.println(i);                       /////////////////    tteesssttt
-        }                         /////////////////    tteesssttt
-        System.out.println(arrived);            /////////////////    tteesssttt
+//        for (int i : arrived){                /////////////////    tteesssttt
+//            System.out.println(i);                       /////////////////    tteesssttt
+//        }                         /////////////////    tteesssttt
+//        System.out.println(arrived);            /////////////////    tteesssttt
 
         int avg = Concert.reception_AverageSteps("D:\\Minvefour\\input2.txt", hash);
         System.out.println("reception_AverageSteps Test: " + avg);
