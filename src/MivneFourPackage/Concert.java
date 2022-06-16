@@ -124,7 +124,7 @@ public class Concert {
             System.out.println(e.getMessage() + "\n" + e.getStackTrace());
         }
 
-        int[] sortedIds = Concert.reception(file_path, registered);    /////////   maybe seat them now ??
+//        int[] sortedIds = Concert.reception(file_path, registered);    /////////   maybe seat them now ??
 
         avg = avg / amount_of_people_arrived;
         return avg;
@@ -139,14 +139,53 @@ public class Concert {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//    public static int[] seatingArrangement(int[] sortedCrowed, HashClosed registered, int functionNum){}
-//
-//
-//
-//    public int h_1(int id, int m){}  ///////  division method
-//
-//    public int h_2(int id, int m){}  ///////  reverse
-//
+    public static int[] seatingArrangement(int[] sortedCrowed, HashClosed registered, int functionNum){
+        HashOpen hall = new HashOpen(sortedCrowed.length);
+        double square_n = Math.sqrt((double)sortedCrowed.length);
+        int n_2 = sortedCrowed.length / 2;
+        int _3n_4 = (sortedCrowed.length*3)/4;
+        double n_minus_square_n = sortedCrowed.length - Math.sqrt((double)sortedCrowed.length);
+
+        int steps_amount_of_n_2_first = 0, steps_amount_of_3n_4_first = 0;
+        int steps_amount_of_n_minus_square_n_first = 0;
+        int steps_amount_of_square_n_last = 0;
+
+        int curr_steps;
+        for (int i = 0; i < sortedCrowed.length; i++) {  /////  sum up to the relevant step counters here with if(i...)
+            curr_steps = hall.insert(sortedCrowed[i], functionNum);
+            if ((i+1) <= n_2){
+                steps_amount_of_n_2_first += curr_steps;
+            }
+            if ((i+1) <= _3n_4){
+                steps_amount_of_3n_4_first += curr_steps;
+            }
+            if ((i+1) <= n_minus_square_n){
+                steps_amount_of_n_minus_square_n_first += curr_steps;
+            }
+            if ((i+1) >= n_minus_square_n){
+                steps_amount_of_square_n_last += curr_steps;
+            }
+        }
+        int[] res = new int[4];
+        res[0] = steps_amount_of_n_2_first;
+        res[1] = steps_amount_of_3n_4_first;
+        res[2] = steps_amount_of_n_minus_square_n_first;
+        res[3] = steps_amount_of_square_n_last;
+        return res;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

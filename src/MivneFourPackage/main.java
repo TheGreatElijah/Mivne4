@@ -16,9 +16,18 @@ public class main {
         int avg = Concert.reception_AverageSteps("D:\\Minvefour\\input2.txt", hash);
         System.out.println("reception_AverageSteps Test: " + avg);
 
-//        int[] steps1 = Concert.seatingArrangement(arrived, hash, 1);
-
-//        int[] steps2 = Concert.seatingArrangement(arrived, hash, 2);
+        int[] steps1 = Concert.seatingArrangement(arrived, hash, 1);
+        System.out.println("steps1:");
+        for (int stat: steps1){
+            System.out.println(stat);
+        }
+        System.out.println("..............ended steps1");
+        int[] steps2 = Concert.seatingArrangement(arrived, hash, 2);
+        System.out.println("steps2:");
+        for (int stat: steps2){
+            System.out.println(stat);
+        }
+        System.out.println("..............ended steps2");
 
     }
 }

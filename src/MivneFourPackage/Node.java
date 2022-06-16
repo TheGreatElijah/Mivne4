@@ -55,7 +55,6 @@ public class Node implements Comparable{
         } else{
             return -1;
         }
-
-
     }
+
 }
