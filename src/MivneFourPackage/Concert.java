@@ -140,7 +140,7 @@ public class Concert {
 
 
     public static int[] seatingArrangement(int[] sortedCrowed, HashClosed registered, int functionNum){
-        HashOpen hall = new HashOpen(sortedCrowed.length);
+        HashOpen hall = new HashOpen(sortedCrowed.length);   ///   why do we need registered ????????
         double square_n = Math.sqrt((double)sortedCrowed.length);
         int n_2 = sortedCrowed.length / 2;
         int _3n_4 = (sortedCrowed.length*3)/4;
@@ -174,19 +174,6 @@ public class Concert {
         return res;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

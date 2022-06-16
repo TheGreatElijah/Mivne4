@@ -15,7 +15,7 @@ public class HashOpen{
     public int getNumberElements(){
         int amount = 0;
         for (int id : this.array_of_hall){
-            if(id != 0){      //////////  beacause when initialized, every cell is 0
+            if(id != 0){      ////////  beacause when initialized, every cell is 0
                 amount++;
             }
         }
@@ -25,6 +25,7 @@ public class HashOpen{
 
     public int insert(int id, int hashFunc){
         int insertion_index, steps_amount = 0, curr_step_size = 1;
+        int[] searched_indexes = new int[this.getSize()];  /// 1 where looked at
         if (hashFunc == 1) {
             insertion_index = this.h_1(id, this.getSize());
         }else{
@@ -40,6 +41,7 @@ public class HashOpen{
                     this.array_of_hall[insertion_index + curr_step_size] = id;
                     return steps_amount;
                 }else{
+                    searched_indexes[insertion_index + curr_step_size] = 1;
                     if (curr_step_size > 0){
                         curr_step_size = curr_step_size*-1;
                     }else{
@@ -47,7 +49,7 @@ public class HashOpen{
                     }
                 }
             }
-            //////////  now from the edge go one by one to the other edge
+            //////////  now from the current edge to the other edge
             int check_index;
             if(insertion_index + curr_step_size == 0){
                 curr_step_size = 1;
@@ -56,14 +58,13 @@ public class HashOpen{
                 curr_step_size = -1;
                 check_index = this.getSize() - 1;
             }
-            while (true){  /// going from the edge to the other side
-                steps_amount++;
-                if(check_index >= this.getSize() || check_index <= -1){
-                    break;
-                }
-                if (this.array_of_hall[check_index] == 0){
-                    this.array_of_hall[check_index] = id;
-                    return steps_amount;
+            while (!(check_index >= this.getSize() || check_index <= -1)){  /// going from the edge to the other side
+                if(searched_indexes[check_index] == 0) {  /// ask ibrahim if we need to jump to unvisited
+                    steps_amount++;
+                    if (this.array_of_hall[check_index] == 0) {
+                        this.array_of_hall[check_index] = id;
+                        return steps_amount;
+                    }
                 }
                 check_index += curr_step_size;
             }
@@ -86,8 +87,6 @@ public class HashOpen{
 
         return res % m;
     }
-
-
 
 
 }
